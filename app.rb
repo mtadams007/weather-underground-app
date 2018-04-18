@@ -5,7 +5,7 @@ city = gets.chomp
 puts "What state is that city in?"
 state = gets.chomp
 
-response = HTTParty.get("http://api.wunderground.com/api/023b537b0ab0fdea/conditions/q/#{state}/#{city}.json")
+response = HTTParty.get("http://api.wunderground.com/api/#{ENV[wunderground_api]}/conditions/q/#{state}/#{city}.json")
 puts response
 object = JSON.parse(response.body)["current_observation"]
 time = object["local_time_rfc822"]
